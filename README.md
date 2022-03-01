@@ -39,11 +39,13 @@ ohmedia_email:
     subject_prefix: '[WEBSITE.COM]' # optional
 ```
 
-The value of `cleanup` should be a string to pass to `new DateTime()`. Emails that
-are older than this DateTime will be deleted.
+The value of `cleanup` should be a string to pass to `new DateTime()`. Emails
+older than this DateTime will be deleted.
 
 The values of `from.email` and `from.name` will be used to create an instance of
 `Util\EmailAddress`. This value will be passed to `setFrom()` on all emails.
+
+The value of `subject_prefix` will be prepended to the subject of every Email.
 
 # Creating Emails
 
