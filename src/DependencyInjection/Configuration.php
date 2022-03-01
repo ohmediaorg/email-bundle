@@ -1,6 +1,6 @@
 <?php
 
-namespace JstnThms\EmailBundle\DependencyInjection;
+namespace OHMedia\EmailBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -17,7 +17,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('jstnthms_email');
+        $treeBuilder = new TreeBuilder('ohmedia_email');
         
         $treeBuilder->getRootNode()
             ->children()

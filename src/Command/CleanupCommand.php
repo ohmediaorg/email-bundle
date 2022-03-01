@@ -1,10 +1,10 @@
 <?php
 
-namespace JstnThms\EmailBundle\Command;
+namespace OHMedia\EmailBundle\Command;
 
 use DateTime;
 use Doctrine\ORM\EntityManager;
-use JstnThms\EmailBundle\Entity\Email;
+use OHMedia\EmailBundle\Entity\Email;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -25,7 +25,7 @@ class CleanupCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('jstnthms:email:cleanup')
+            ->setName('ohmedia:email:cleanup')
             ->setDescription('Clean up old emails')
         ;
     }

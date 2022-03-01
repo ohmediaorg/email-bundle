@@ -1,9 +1,9 @@
 <?php
 
-namespace JstnThms\EmailBundle\Entity;
+namespace OHMedia\EmailBundle\Entity;
 
-use JstnThms\EmailBundle\Repository\EmailRepository;
-use JstnThms\EmailBundle\Util\EmailAddress;
+use OHMedia\EmailBundle\Repository\EmailRepository;
+use OHMedia\EmailBundle\Util\EmailAddress;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 

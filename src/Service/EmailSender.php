@@ -1,9 +1,9 @@
 <?php
 
-namespace JstnThms\EmailBundle\Service;
+namespace OHMedia\EmailBundle\Service;
 
 use Exception;
-use JstnThms\EmailBundle\Entity\Email;
+use OHMedia\EmailBundle\Entity\Email;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mime\Email as MimeEmail;
 use Swift_Message;

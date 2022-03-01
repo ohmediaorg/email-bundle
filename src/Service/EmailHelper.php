@@ -1,10 +1,10 @@
 <?php
 
-namespace JstnThms\EmailBundle\Service;
+namespace OHMedia\EmailBundle\Service;
 
 use Doctrine\ORM\EntityManager;
-use JstnThms\EmailBundle\Entity\Email;
-use JstnThms\SettingsBundle\Settings\Settings;
+use OHMedia\EmailBundle\Entity\Email;
+use OHMedia\SettingsBundle\Settings\Settings;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 use Twig\Environment as Twig;
 
@@ -20,13 +20,13 @@ class EmailHelper
     {
         $this->em = $em;
         
-        $fromEmail = $settings->get('jstnthms_email_from_email') ?: 'no-reply@ohmedia.ca';
-        $fromName = $settings->get('jstnthms_email_from_name');
+        $fromEmail = $settings->get('ohmedia_email_from_email') ?: 'no-reply@ohmedia.ca';
+        $fromName = $settings->get('ohmedia_email_from_name');
         $this->from = $fromName 
             ? sprintf('%s <%s>', $fromName, $fromEmail)
             : $fromEmail;
         
-        $this->prefix = $settings->get('jstnthms_email_subject_prefix');
+        $this->prefix = $settings->get('ohmedia_email_subject_prefix');
         
         $this->twig = $twig;
         

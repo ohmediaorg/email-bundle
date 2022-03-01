@@ -1,6 +1,6 @@
 <?php
 
-namespace JstnThms\EmailBundle\DependencyInjection;
+namespace OHMedia\EmailBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class JstnThmsEmailExtension extends Extension
+class OHMediaEmailExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -26,7 +26,7 @@ class JstnThmsEmailExtension extends Extension
         $loader->load('services.yml');
 
         foreach ($config as $key => $value) {
-            $container->setParameter("jstnthms_email.$key", $value);
+            $container->setParameter("ohmedia_email.$key", $value);
         }
     }
 }

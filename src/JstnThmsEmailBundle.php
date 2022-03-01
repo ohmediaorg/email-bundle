@@ -1,9 +1,9 @@
 <?php
 
-namespace JstnThms\EmailBundle;
+namespace OHMedia\EmailBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class JstnThmsEmailBundle extends Bundle
+class OHMediaEmailBundle extends Bundle
 {
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace JstnThms\EmailBundle\Service;
+namespace OHMedia\EmailBundle\Service;
 
-use JstnThms\EmailBundle\Entity\Email;
+use OHMedia\EmailBundle\Entity\Email;
 
 interface EmailSenderInterface
 {

@@ -11,7 +11,7 @@ Enable the bundle in `config/bundles.php`:
 ```php
 return [
     // ...
-    JstnThms\EmailBundle\JstnThmsEmailBundle::class => ['all' => true],
+    OHMedia\EmailBundle\OHMediaEmailBundle::class => ['all' => true],
 ];
 ```
 
@@ -25,7 +25,7 @@ $ php bin/console doctrine:migrations:migrate
 Create the CRON job:
 
 ```bash
-* * * * * /path/to/php /path/to/symfony/bin/console jstnthms:email:send
+* * * * * /path/to/php /path/to/symfony/bin/console ohmedia:email:send
 ```
 
 Creating Emails
@@ -34,7 +34,7 @@ Creating Emails
 Using the helper:
 
 ```php
-use JstnThms\EmailBundle\Service\EmailHelper;
+use OHMedia\EmailBundle\Service\EmailHelper;
 
 class Controller
 {

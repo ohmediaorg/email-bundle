@@ -1,6 +1,6 @@
 <?php
 
-namespace JstnThms\EmailBundle\Util;
+namespace OHMedia\EmailBundle\Util;
 
 class EmailAddress
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace JstnThms\EmailBundle\Repository;
+namespace OHMedia\EmailBundle\Repository;
 
 use DateTimeInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use JstnThms\EmailBundle\Entity\Email;
+use OHMedia\EmailBundle\Entity\Email;
 
 /**
  * @method Email|null find($id, $lockMode = null, $lockVersion = null)
