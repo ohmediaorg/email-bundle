@@ -31,21 +31,30 @@ Create the CRON job:
 Creating Emails
 ===============
 
-Using the helper:
+Simple populate and save a an Email entity:
 
 ```php
-use OHMedia\EmailBundle\Service\EmailHelper;
+use OHMedia\EmailBundle\Entity\Email;
+use OHMedia\EmailBundle\Util\EmailAddress;
 
-class Controller
-{
-    public function sendEmail(EmailHelper $helper)
-    {
-        $helper->send($subject, $template, $parameters, $to);
-    }
-}
+$recipient = new EmailAddress('justin@ohmedia.ca', 'Justin Hoffman');
+
+$email = new Email();
+$email
+    ->setSubject('Confirmation Email')
+    
+    // the email can be text-based
+    ->setText($text)
+    
+    // or the email can be HTML-based
+    ->setHtml($html)
+    
+    // create an HTML-based email using Twig templates
+    ->setTemplate($template, $params)
+    
+    // the functions setTo, setCc, setBcc are all variadric
+    ->setTo($recipient)
+;
 ```
-
-When using the helper, email settings are used to set the
-subject prefix, and the `from` component of the email.
 
 The new Email will get sent the next time CRON runs.
