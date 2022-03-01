@@ -18,14 +18,13 @@ class EmailPrePersist
     public function __construct(
         EntityManager $em,
         Twig $twig,
-        string $fromEmail,
-        string $fromName,
+        EmailAddress $from,
         string $subjectPrefix
     )
     {
         $this->em = $em;
 
-        $this->from = new EmailAddress($fromEmail, $fromName);
+        $this->from = $from;
 
         $this->subjectPrefix = $subjectPrefix;
 

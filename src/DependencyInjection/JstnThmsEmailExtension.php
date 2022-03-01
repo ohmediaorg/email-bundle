@@ -21,12 +21,15 @@ class OHMediaEmailExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        foreach ($config as $key => $value) {
-            $container->setParameter("ohmedia_email.$key", $value);
-        }
+        $container->setParameter('ohmedia_email.cleanup', $config['cleanup']);
+
+        $from = new EmailAddress($config['from']['email'], $config['from']['name']);
+        $container->setParameter('ohmedia_email.from', $from);
+
+        $container->setParameter('ohmedia_email.subject_prefix', $config['subject_prefix']);
     }
 }

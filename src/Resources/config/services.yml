@@ -12,7 +12,7 @@ services:
         tags: ["doctrine.repository_service"]
 
     OHMedia\EmailBundle\EventListener\EmailPrePersist:
-        arguments: ["@doctrine.orm.entity_manager", "@twig"]
+        arguments: ["@doctrine.orm.entity_manager", "@twig", "%ohmedia_email.from%", "%ohmedia_email.subject_prefix%"]
         tags:
             -
                 name: 'doctrine.orm.entity_listener'

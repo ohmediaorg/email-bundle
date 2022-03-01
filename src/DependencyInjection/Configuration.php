@@ -18,13 +18,23 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('ohmedia_email');
-        
+
         $treeBuilder->getRootNode()
             ->children()
                 ->scalarNode('cleanup')
                     ->defaultValue('-1 year')
                 ->end()
-                ->scalarNode('stylesheet')->end()
+                ->arrayNode('from')
+                    ->children()
+                      ->scalarNode('email')
+                          ->isRequired()
+                      ->end()
+                      ->scalarNode('name')
+                          ->isRequired()
+                      ->end()
+                  ->end()
+                ->end()
+                ->scalarNode('subject_prefix')->end()
             ->end()
         ;
 
