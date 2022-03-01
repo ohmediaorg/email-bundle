@@ -94,7 +94,7 @@ class Email
         return $this;
     }
 
-    public function getTo(): ?array
+    public function getTo(): array
     {
         return $this->to;
     }
@@ -106,7 +106,7 @@ class Email
         return $this;
     }
 
-    public function getCc(): ?array
+    public function getCc(): array
     {
         return $this->cc;
     }
@@ -118,7 +118,7 @@ class Email
         return $this;
     }
 
-    public function getBcc(): ?array
+    public function getBcc(): array
     {
         return $this->bcc;
     }
@@ -130,7 +130,7 @@ class Email
         return $this;
     }
 
-    public function getFrom(): ?array
+    public function getFrom(): array
     {
         return $this->from;
     }
@@ -142,7 +142,7 @@ class Email
         return $this;
     }
 
-    public function getReplyTo(): ?array
+    public function getReplyTo(): array
     {
         return $this->replyTo;
     }
