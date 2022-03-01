@@ -1,10 +1,8 @@
-Overview
-========
+# Overview
 
 This bundle offers functionality to leverage email sending via a CRON job.
 
-Installation
-============
+# Installation
 
 Enable the bundle in `config/bundles.php`:
 
@@ -28,8 +26,7 @@ Create the CRON job:
 * * * * * /path/to/php /path/to/symfony/bin/console ohmedia:email:send
 ```
 
-Creating Emails
-===============
+# Creating Emails
 
 Simple populate and save a an Email entity:
 
@@ -58,3 +55,34 @@ $email
 ```
 
 The new Email will get sent the next time CRON runs.
+
+# Email Styles
+
+Email styles need to be applied inline. Create a file called
+`src/Resources/OHMediaEmail/inline-css.html.twig`.
+
+The contents of that file can be:
+
+```twig
+{% apply inline_css %}
+    <style>
+        {# here, define your CSS styles as usual #}
+    </style>
+
+    {{{ html }}}
+{% endapply %}
+```
+
+or 
+
+```twig
+{% apply inline_css(source('@styles/email.css')) %}
+    {{{ html }}}
+{% endapply %}
+```
+
+The path to the email styles can be whatever it needs to be.
+
+_*Note:* It's recommended to have a separate set of styles for your emails. These
+styles should be as simple as possible. They need to work in all sorts of email
+programs!_
