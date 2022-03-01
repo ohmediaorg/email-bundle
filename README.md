@@ -54,6 +54,7 @@ Simply populate and save an Email entity:
 ```php
 use OHMedia\EmailBundle\Entity\Email;
 use OHMedia\EmailBundle\Util\EmailAddress;
+use OHMedia\EmailBundle\Util\EmailAttachment;
 
 $recipient = new EmailAddress('justin@ohmedia.ca', 'Justin Hoffman');
 
@@ -62,23 +63,23 @@ $formUserEmail = new EmailAddress($form->get('email'), $form->get('name'));
 $email = new Email();
 $email
     ->setSubject('Confirmation Email')
-    
-    // the email can be text-based
-    ->setText($text)
-    
-    // or the email can be HTML-based
-    ->setHtml($html)
-    
-    // create an HTML-based email using Twig templates
     ->setTemplate($template, $params)
-    
-    // the functions setTo, setCc, setBcc, and setReplyTo are all variadic
     ->setTo($recipient)
-    
-    // use setReplyTo instead of setFrom
     ->setReplyTo($formUserEmail)
 ;
+
+$attachment = new EmailAttachment('/absolute/path/to/file.txt', 'Notes');
+
+$email->setAttachments($attachment);
+
+$em->persist($email);
+$em->flush();
 ```
+
+Don't bother using `setFrom()`. The value will get overridden. You can use
+`setHtml` or `setTemplate` to populate the email content.
+
+Various functions on this class are variadic (https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list).
 
 The new Email will get sent the next time CRON runs.
 

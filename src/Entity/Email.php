@@ -4,6 +4,7 @@ namespace OHMedia\EmailBundle\Entity;
 
 use OHMedia\EmailBundle\Repository\EmailRepository;
 use OHMedia\EmailBundle\Util\EmailAddress;
+use OHMedia\EmailBundle\Util\EmailAttachment;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -54,6 +55,11 @@ class Email
      * @ORM\Column(type="json", nullable=true)
      */
     private $reply_to = [];
+
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $attachments = [];
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -150,6 +156,28 @@ class Email
     public function setReplyTo(EmailAddress ...$replyTo): self
     {
         $this->reply_to = $replyTo;
+
+        return $this;
+    }
+
+    public function getAttachments(): array
+    {
+        $attachments = [];
+
+        foreach ($this->attachments as $attachment) {
+            $attachments[] = EmailAttachment(
+                $attachment['path'],
+                $attachment['name'],
+                $attachment['contentType']
+            );
+        }
+
+        return $attachments;
+    }
+
+    public function setAttachments(EmailAttachment ...$attachments): self
+    {
+        $this->attachments = $attachments;
 
         return $this;
     }
