@@ -26,15 +26,36 @@ Create the CRON job:
 * * * * * /path/to/php /path/to/symfony/bin/console ohmedia:email:send
 ```
 
+# Configuration
+
+Create `config/packages/ohmedia_email.yml` with the following contents:
+
+```yaml
+ohmedia_email:
+    cleanup: '-1 year' # this is the default
+    from:
+        email: no-reply@website.com # required
+        name: Website.com # required
+    subject_prefix: '[WEBSITE.COM]' # optional
+```
+
+The value of `cleanup` should be a string to pass to `new DateTime()`. Emails that
+are older than this DateTime will be deleted.
+
+The values of `from.email` and `from.name` will be used to create an instance of
+`Util\EmailAddress`. This value will be passed to `setFrom()` on all emails.
+
 # Creating Emails
 
-Simple populate and save a an Email entity:
+Simply populate and save an Email entity:
 
 ```php
 use OHMedia\EmailBundle\Entity\Email;
 use OHMedia\EmailBundle\Util\EmailAddress;
 
 $recipient = new EmailAddress('justin@ohmedia.ca', 'Justin Hoffman');
+
+$formUserEmail = new EmailAddress($form->get('email'), $form->get('name'));
 
 $email = new Email();
 $email
@@ -49,8 +70,11 @@ $email
     // create an HTML-based email using Twig templates
     ->setTemplate($template, $params)
     
-    // the functions setTo, setCc, setBcc are all variadric
+    // the functions setTo, setCc, setBcc, and setReplyTo are all variadic
     ->setTo($recipient)
+    
+    // use setReplyTo instead of setFrom
+    ->setReplyTo($formUserEmail)
 ;
 ```
 
