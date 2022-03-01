@@ -78,9 +78,10 @@ class SendCommand extends Command
             ->html($entityEmail->getHtml())
         ;
 
-        foreach ($entityEmail->getAttachments() as $attachment) {
+        // TODO: need to actually add EmailAttachment functionality
+        /*foreach ($entityEmail->getAttachments() as $attachment) {
             $mimeEmail->attachFromPath($attachment->getPath(), $attachment->getName());
-        }
+        }*/
 
         $mimeEmail->getHeaders()
             // this header tells auto-repliers ("email holiday mode") to not
