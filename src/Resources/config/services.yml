@@ -1,8 +1,4 @@
 services:
-    ohmedia_email.sender:
-        class: OHMedia\EmailBundle\Service\EmailSender
-        arguments: ["@mailer"]
-
     OHMedia\EmailBundle\Service\EmailHelper:
         arguments: ["@doctrine.orm.entity_manager", "@ohmedia_settings.settings", "@twig", "%ohmedia_email.stylesheet%"]
 
