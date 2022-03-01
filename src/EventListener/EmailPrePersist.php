@@ -19,7 +19,7 @@ class EmailPrePersist
         EntityManager $em,
         Twig $twig,
         EmailAddress $from,
-        string $subjectPrefix
+        ?string $subjectPrefix
     )
     {
         $this->em = $em;
