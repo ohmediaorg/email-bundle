@@ -42,10 +42,9 @@ class EmailPrePersist
         }
 
         $template = $email->getTemplate();
-        $parameters = $email->getParameters();
 
         if ($template) {
-            $html = $this->getHtml($template, $parameters);
+            $html = $this->getHtml($template, $email->getParameters());
 
             $email->setHtml($html);
         }
