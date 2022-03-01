@@ -1,0 +1,19 @@
+services:
+    jstnthms_email.sender:
+        class: JstnThms\EmailBundle\Service\EmailSender
+        arguments: ["@mailer"]
+
+    JstnThms\EmailBundle\Service\EmailHelper:
+        arguments: ["@doctrine.orm.entity_manager", "@jstnthms_settings.settings", "@twig", "%jstnthms_email.stylesheet%"]
+
+    JstnThms\EmailBundle\Command\CleanupCommand:
+        arguments: ["@doctrine.orm.entity_manager", "%jstnthms_email.cleanup%"]
+        tags: ["console.command"]
+
+    JstnThms\EmailBundle\Command\SendCommand:
+        arguments: ["@doctrine.orm.entity_manager", "@jstnthms_email.sender"]
+        tags: ["console.command"]
+
+    JstnThms\EmailBundle\Repository\EmailRepository:
+        arguments: ["@Doctrine\\Persistence\\ManagerRegistry"]
+        tags: ["doctrine.repository_service"]

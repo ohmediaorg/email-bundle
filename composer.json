@@ -1,0 +1,22 @@
+{
+    "name": "jstnthms/email-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony EmailBundle",
+    "keywords": ["email"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justin Hoffman",
+            "email": "jstnhffmn@gmail.com"
+        }
+    ],
+    "require": {
+        "jstnthms/settings-bundle": "dev-master",
+        "php": "^7.2",
+        "symfony/framework-bundle": "~5.0",
+        "tijsverkoyen/css-to-inline-styles": "^2.2"
+    },
+    "autoload": {
+        "psr-4": { "JstnThms\\EmailBundle\\": "src/" }
+    }
+}
