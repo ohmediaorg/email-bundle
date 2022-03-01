@@ -177,4 +177,15 @@ class Email
 
         return $this;
     }
+
+    private $template;
+    private $parameters;
+
+    public function setTemplate(string $template, array $parameters = [])
+    {
+        $this->template = $template;
+        $this->parameters = $parameters;
+
+        return $this;
+    }
 }
