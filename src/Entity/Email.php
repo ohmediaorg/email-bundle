@@ -188,4 +188,14 @@ class Email
 
         return $this;
     }
+
+    public function getTemplate(): string
+    {
+        return $this->template;
+    }
+
+    public function getParameters(): array
+    {
+        return $this->parameters;
+    }
 }
