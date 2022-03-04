@@ -28,10 +28,10 @@ Create the CRON job:
 
 # Configuration
 
-Create `config/packages/ohmedia_email.yml` with the following contents:
+Create `config/packages/oh_media_email.yml` with the following contents:
 
 ```yaml
-ohmedia_email:
+oh_media_email:
     cleanup: '-1 year' # this is the default
     from:
         email: no-reply@website.com # required

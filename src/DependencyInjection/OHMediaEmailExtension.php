@@ -2,7 +2,7 @@
 
 namespace OHMedia\EmailBundle\DependencyInjection;
 
-use OHMedia\EmailBundle\Util\EmailAdddress;
+use OHMedia\EmailBundle\Util\EmailAddress;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -28,8 +28,9 @@ class OHMediaEmailExtension extends Extension
 
         $container->setParameter('ohmedia_email.cleanup', $config['cleanup']);
 
-        $from = new EmailAddress($config['from']['email'], $config['from']['name']);
-        $container->setParameter('ohmedia_email.from', $from);
+        $container->setParameter('ohmedia_email.from_email', $config['from']['email']);
+
+        $container->setParameter('ohmedia_email.from_name', $config['from']['name']);
 
         $container->setParameter('ohmedia_email.subject_prefix', $config['subject_prefix']);
     }

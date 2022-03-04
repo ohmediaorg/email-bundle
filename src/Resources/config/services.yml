@@ -4,7 +4,6 @@ services:
         tags: ["console.command"]
 
     OHMedia\EmailBundle\Command\SendCommand:
-        arguments: ["@doctrine.orm.entity_manager", "@ohmedia_email.sender"]
         tags: ["console.command"]
 
     OHMedia\EmailBundle\Repository\EmailRepository:
@@ -12,7 +11,7 @@ services:
         tags: ["doctrine.repository_service"]
 
     OHMedia\EmailBundle\EventListener\EmailPrePersist:
-        arguments: ["@doctrine.orm.entity_manager", "@twig", "%ohmedia_email.from%", "%ohmedia_email.subject_prefix%"]
+        arguments: ["@doctrine.orm.entity_manager", "@twig", "%ohmedia_email.from_email%", "%ohmedia_email.from_name%", "%ohmedia_email.subject_prefix%"]
         tags:
             -
                 name: 'doctrine.orm.entity_listener'

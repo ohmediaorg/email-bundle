@@ -25,6 +25,7 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('-1 year')
                 ->end()
                 ->arrayNode('from')
+                    ->isRequired()
                     ->children()
                       ->scalarNode('email')
                           ->isRequired()
