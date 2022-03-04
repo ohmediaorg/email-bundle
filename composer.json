@@ -1,5 +1,5 @@
 {
-    "name": "ohmedia/email-bundle",
+    "name": "justin-oh/email-bundle",
     "type": "symfony-bundle",
     "description": "Symfony EmailBundle",
     "keywords": ["email"],
@@ -11,10 +11,8 @@
         }
     ],
     "require": {
-        "justin-oh/settings-bundle": "dev-master",
         "php": "^8.0",
-        "symfony/framework-bundle": "5.4.*",
-        "tijsverkoyen/css-to-inline-styles": "^2.2"
+        "symfony/framework-bundle": "5.4.*"
     },
     "autoload": {
         "psr-4": { "OHMedia\\EmailBundle\\": "src/" }
