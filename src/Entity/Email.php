@@ -150,7 +150,7 @@ class Email
 
     public function getReplyTo(): array
     {
-        return $this->replyTo;
+        return $this->reply_to;
     }
 
     public function setReplyTo(EmailAddress ...$replyTo): self
@@ -165,7 +165,7 @@ class Email
         $attachments = [];
 
         foreach ($this->attachments as $attachment) {
-            $attachments[] = EmailAttachment(
+            $attachments[] = new EmailAttachment(
                 $attachment['path'],
                 $attachment['name'],
                 $attachment['contentType']

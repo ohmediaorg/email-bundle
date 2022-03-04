@@ -37,7 +37,7 @@ class SendCommand extends Command
     {
         $now = new DateTime();
 
-        $entityEmails = $this->em->getRepository(Email::class)->getUnsent();
+        $entityEmails = $this->em->getRepository(EntityEmail::class)->getUnsent();
 
         foreach ($entityEmails as $entityEmail) {
             // flag the email as sending to prevent double-sending
@@ -48,7 +48,7 @@ class SendCommand extends Command
                 $this->sendEmail($entityEmail);
 
                 // sending was successful if we got here
-                $email->setSentAt($now);
+                $entityEmail->setSentAt($now);
             }
             catch (Exception $e) {
                 // need to catch the exception
@@ -91,6 +91,6 @@ class SendCommand extends Command
             // reply to this message because it's an automated email
             ->addTextHeader('X-Auto-Response-Suppress', 'OOF, DR, RN, NRN, AutoReply');
 
-        $this->mailer->send($email);
+        $this->mailer->send($mimeEmail);
     }
 }
