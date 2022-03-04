@@ -2,6 +2,7 @@
 
 namespace OHMedia\EmailBundle\DependencyInjection;
 
+use OHMedia\EmailBundle\Util\EmailAdddress;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
