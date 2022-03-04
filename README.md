@@ -86,7 +86,7 @@ The new Email will get sent the next time CRON runs.
 # Email Styles
 
 Email styles need to be applied inline. Create a file called
-`src/Resources/OHMediaEmail/inline-css.html.twig`.
+`templates/bundles/OHMediaEmailBundle/inline-css.html.twig`.
 
 The contents of that file can be:
 
@@ -96,7 +96,7 @@ The contents of that file can be:
         {# here, define your CSS styles as usual #}
     </style>
 
-    {{{ html }}}
+    {{ html|raw }}
 {% endapply %}
 ```
 
@@ -104,7 +104,7 @@ or
 
 ```twig
 {% apply inline_css(source('@styles/email.css')) %}
-    {{{ html }}}
+    {{ html|raw }}
 {% endapply %}
 ```
 
