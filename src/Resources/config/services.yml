@@ -4,6 +4,7 @@ services:
         tags: ["console.command"]
 
     OHMedia\EmailBundle\Command\SendCommand:
+        arguments: ["@doctrine.orm.entity_manager", "@mailer"]
         tags: ["console.command"]
 
     OHMedia\EmailBundle\Repository\EmailRepository:
