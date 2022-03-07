@@ -110,6 +110,6 @@ or
 
 The path to the email styles can be whatever it needs to be.
 
-_*Note:* It's recommended to have a separate set of styles for your emails. These
+_**Note:** It's recommended to have a separate set of styles for your emails. These
 styles should be as simple as possible. They need to work in all sorts of email
 programs!_
