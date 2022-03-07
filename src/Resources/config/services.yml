@@ -1,7 +1,7 @@
 services:
-    OHMedia\EmailBundle\Command\CleanupCommand:
-        arguments: ["@doctrine.orm.entity_manager", "%ohmedia_email.cleanup%"]
-        tags: ["console.command"]
+    OHMedia\EmailBundle\Cleanup\EmailCleaner:
+        arguments: ["@ohmedia_email.repository", "%ohmedia_email.cleanup%"]
+        tags: ["ohmedia_cleanup.cleaner"]
 
     OHMedia\EmailBundle\Command\SendCommand:
         arguments: ["@doctrine.orm.entity_manager", "@mailer"]
@@ -10,6 +10,9 @@ services:
     OHMedia\EmailBundle\Repository\EmailRepository:
         arguments: ["@Doctrine\\Persistence\\ManagerRegistry"]
         tags: ["doctrine.repository_service"]
+
+    ohmedia_email.repository:
+        alias: OHMedia\EmailBundle\Repository\EmailRepository
 
     OHMedia\EmailBundle\EventListener\EmailPrePersist:
         arguments: ["@doctrine.orm.entity_manager", "@twig", "%ohmedia_email.from_email%", "%ohmedia_email.from_name%", "%ohmedia_email.subject_prefix%"]
