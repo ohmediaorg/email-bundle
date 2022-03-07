@@ -11,6 +11,7 @@
         }
     ],
     "require": {
+        "ohmedia/cleanup-bundle": "dev-main",
         "php": ">=7.2.5",
         "symfony/framework-bundle": "5.4.*",
         "twig/cssinliner-extra": "^3.3"
