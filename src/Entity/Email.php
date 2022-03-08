@@ -9,7 +9,6 @@ use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EmailRepository::class)]
-#[ORM\Table(name: 'emails')]
 class Email
 {
     #[ORM\Id()]
