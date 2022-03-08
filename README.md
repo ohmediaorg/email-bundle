@@ -4,6 +4,8 @@ This bundle offers functionality to leverage email sending via a CRON job.
 
 # Installation
 
+First, make sure the OHMediaCleanupBundle is installed.
+
 Enable the bundle in `config/bundles.php`:
 
 ```php
