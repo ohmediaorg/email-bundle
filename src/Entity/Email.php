@@ -8,67 +8,43 @@ use OHMedia\EmailBundle\Util\EmailAttachment;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=EmailRepository::class)
- * @ORM\Table(name="emails")
- */
+#[ORM\Entity(repositoryClass: EmailRepository::class)]
+#[ORM\Table(name: 'emails')]
 class Email
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id()]
+    #[ORM\GeneratedValue()]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private $subject;
 
-    /**
-     * @ORM\Column(type="text")
-     */
+    #[ORM\Column(type: 'text')]
     private $html;
 
-    /**
-     * @ORM\Column(type="json", name="recipients")
-     */
+    #[ORM\Column(type: 'json', name: 'recipients')]
     private $to = [];
 
-    /**
-     * @ORM\Column(type="json", nullable=true)
-     */
+    #[ORM\Column(type: 'json', nullable: true)]
     private $cc = [];
 
-    /**
-     * @ORM\Column(type="json", nullable=true)
-     */
+    #[ORM\Column(type: 'json', nullable: true)]
     private $bcc = [];
 
-    /**
-     * @ORM\Column(type="json", name="senders", nullable=true)
-     */
+    #[ORM\Column(type: 'json', name: 'senders', nullable: true)]
     private $from = [];
 
-    /**
-     * @ORM\Column(type="json", nullable=true)
-     */
+    #[ORM\Column(type: 'json', nullable: true)]
     private $reply_to = [];
 
-    /**
-     * @ORM\Column(type="json", nullable=true)
-     */
+    #[ORM\Column(type: 'json', nullable: true)]
     private $attachments = [];
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $sending;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $sent_at;
 
     public function getId(): ?int
