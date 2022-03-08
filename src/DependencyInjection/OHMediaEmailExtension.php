@@ -26,12 +26,12 @@ class OHMediaEmailExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $container->setParameter('ohmedia_email.cleanup', $config['cleanup']);
+        $container->setParameter('oh_media_email.cleanup', $config['cleanup']);
 
-        $container->setParameter('ohmedia_email.from_email', $config['from']['email']);
+        $container->setParameter('oh_media_email.from_email', $config['from']['email']);
 
-        $container->setParameter('ohmedia_email.from_name', $config['from']['name']);
+        $container->setParameter('oh_media_email.from_name', $config['from']['name']);
 
-        $container->setParameter('ohmedia_email.subject_prefix', $config['subject_prefix']);
+        $container->setParameter('oh_media_email.subject_prefix', $config['subject_prefix']);
     }
 }
