@@ -3,8 +3,9 @@
 namespace OHMedia\EmailBundle\Util;
 
 use JsonSerializable;
+use Stringable;
 
-class EmailAddress implements JsonSerializable
+class EmailAddress implements JsonSerializable, Stringable
 {
     private $email;
     private $name;
@@ -20,7 +21,7 @@ class EmailAddress implements JsonSerializable
         return (string) $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         if ($this->name) {
             return sprintf('%s <%s>', $this->name, $this->email);
