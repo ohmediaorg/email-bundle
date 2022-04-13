@@ -1,10 +1,13 @@
 # Overview
 
-This bundle offers functionality to leverage email sending via a CRON job.
+This bundle offers functionality to leverage email sending via a Symfony's
+messenger system, while storing recently sent emails in the DB for debug/admin
+purposes.
 
 # Installation
 
-First, make sure the OHMediaCleanupBundle is installed.
+First, make sure the OHMediaCleanupBundle is installed and Symfony's messenger
+system is set up.
 
 Enable the bundle in `config/bundles.php`:
 
@@ -22,12 +25,6 @@ $ php bin/console make:migration
 $ php bin/console doctrine:migrations:migrate
 ```
 
-Create the CRON job:
-
-```bash
-* * * * * /path/to/php /path/to/symfony/bin/console ohmedia:email:send
-```
-
 # Configuration
 
 Create `config/packages/oh_media_email.yml` with the following contents:
@@ -42,7 +39,7 @@ oh_media_email:
 ```
 
 The value of `cleanup` should be a string to pass to `new DateTime()`. Emails
-older than this DateTime will be deleted.
+older than this DateTime will be deleted daily.
 
 The values of `from.email` and `from.name` will be used to create an instance of
 `Util\EmailAddress`. This value will be passed to `setFrom()` on all emails.
@@ -83,7 +80,7 @@ Don't bother using `setFrom()`. The value will get overridden. You can use
 
 Various functions on this class are variadic (https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list).
 
-The new Email will get sent the next time CRON runs.
+The new Email will get sent once Symfony's messaging system has processed it.
 
 # Email Styles
 

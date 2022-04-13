@@ -40,11 +40,8 @@ class Email
     #[ORM\Column(type: 'json', nullable: true)]
     private $attachments = [];
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $sending;
-
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    private $sent_at;
+    #[ORM\Column(type: 'datetime')]
+    private $created_at;
 
     public function getId(): ?int
     {
@@ -77,7 +74,7 @@ class Email
 
     public function getTo(): array
     {
-        return $this->to;
+        return $this->emailAddressesToStrings($this->to);
     }
 
     public function setTo(EmailAddress ...$to): self
@@ -89,7 +86,7 @@ class Email
 
     public function getCc(): array
     {
-        return $this->cc;
+        return $this->emailAddressesToStrings($this->cc);
     }
 
     public function setCc(EmailAddress ...$cc): self
@@ -101,7 +98,7 @@ class Email
 
     public function getBcc(): array
     {
-        return $this->bcc;
+        return $this->emailAddressesToStrings($this->bcc);
     }
 
     public function setBcc(EmailAddress ...$bcc): self
@@ -113,7 +110,7 @@ class Email
 
     public function getFrom(): array
     {
-        return $this->from;
+        return $this->emailAddressesToStrings($this->from);
     }
 
     public function setFrom(EmailAddress ...$from): self
@@ -125,7 +122,7 @@ class Email
 
     public function getReplyTo(): array
     {
-        return $this->reply_to;
+        return $this->emailAddressesToStrings($this->reply_to);
     }
 
     public function setReplyTo(EmailAddress ...$replyTo): self
@@ -157,26 +154,14 @@ class Email
         return $this;
     }
 
-    public function getSending(): ?bool
+    public function getCreatedAt(): ?DateTimeInterface
     {
-        return $this->sending;
+        return $this->created_at;
     }
 
-    public function setSending(?bool $sending): self
+    public function setCreatedAt(?DateTimeInterface $createdAt): self
     {
-        $this->sending = $sending;
-
-        return $this;
-    }
-
-    public function getSentAt(): ?DateTimeInterface
-    {
-        return $this->sent_at;
-    }
-
-    public function setSentAt(?DateTimeInterface $sentAt): self
-    {
-        $this->sent_at = $sentAt;
+        $this->created_at = $createdAt;
 
         return $this;
     }
@@ -200,5 +185,12 @@ class Email
     public function getParameters(): array
     {
         return $this->parameters;
+    }
+
+    private function emailAddressesToStrings(array $emails)
+    {
+        return array_map(function($email) {
+            return (string) $email;
+        }, $emails);
     }
 }
