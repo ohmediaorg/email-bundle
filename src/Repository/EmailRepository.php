@@ -38,22 +38,12 @@ class EmailRepository extends ServiceEntityRepository
         }
     }
 
-    public function getUnsent()
-    {
-        return $this->createQueryBuilder('e')
-            ->where('e.sending = 0 OR e.sending IS NULL')
-            ->andWhere('e.sent_at IS NULL')
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function deleteSentBefore(DateTimeInterface $sent_before)
+    public function deleteSentBefore(DateTimeInterface $sentBefore)
     {
         return $this->createQueryBuilder('e')
             ->delete()
-            ->where('e.sent_at IS NOT NULL')
-            ->andWhere('e.sent_at < :sent_before')
-            ->setParameter('sent_before', $sent_before)
+            ->where('e.created_at < :sent_before')
+            ->setParameter('sent_before', $sentBefore)
             ->getQuery()
             ->execute();
     }
