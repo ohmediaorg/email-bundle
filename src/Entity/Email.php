@@ -189,7 +189,7 @@ class Email
 
     private function emailAddressesToStrings(array $emails)
     {
-        return array_map(function($email) {
+        return array_map(function ($email) {
             return (string) $email;
         }, $emails);
     }

@@ -14,8 +14,7 @@ class EmailAttachment implements JsonSerializable
         string $path,
         string $name = null,
         string $contentType = null
-    )
-    {
+    ) {
         $this->path = $path;
         $this->name = $name;
         $this->contentType = $contentType;

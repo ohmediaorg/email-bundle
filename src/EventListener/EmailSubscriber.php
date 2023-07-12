@@ -28,8 +28,7 @@ class EmailSubscriber implements EventSubscriberInterface
         string $fromEmail,
         string $fromName,
         ?string $subjectPrefix
-    )
-    {
+    ) {
         $this->em = $em;
         $this->from = new EmailAddress($fromEmail, $fromName);
         $this->mailer = $mailer;
