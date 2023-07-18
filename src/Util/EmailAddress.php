@@ -2,10 +2,7 @@
 
 namespace OHMedia\EmailBundle\Util;
 
-use JsonSerializable;
-use Stringable;
-
-class EmailAddress implements JsonSerializable, Stringable
+class EmailAddress implements \JsonSerializable, \Stringable
 {
     private $email;
     private $name;

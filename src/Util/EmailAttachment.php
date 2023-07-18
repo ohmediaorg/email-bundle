@@ -2,9 +2,7 @@
 
 namespace OHMedia\EmailBundle\Util;
 
-use JsonSerializable;
-
-class EmailAttachment implements JsonSerializable
+class EmailAttachment implements \JsonSerializable
 {
     private $path;
     private $name;
