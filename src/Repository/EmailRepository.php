@@ -2,7 +2,6 @@
 
 namespace OHMedia\EmailBundle\Repository;
 
-use DateTimeInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use OHMedia\EmailBundle\Entity\Email;
@@ -38,7 +37,7 @@ class EmailRepository extends ServiceEntityRepository
         }
     }
 
-    public function deleteSentBefore(DateTimeInterface $sentBefore)
+    public function deleteSentBefore(\DateTimeInterface $sentBefore)
     {
         return $this->createQueryBuilder('e')
             ->delete()

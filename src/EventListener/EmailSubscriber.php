@@ -2,7 +2,6 @@
 
 namespace OHMedia\EmailBundle\EventListener;
 
-use DateTime;
 use Doctrine\Bundle\DoctrineBundle\EventSubscriber\EventSubscriberInterface;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Events;
@@ -54,7 +53,7 @@ class EmailSubscriber implements EventSubscriberInterface
 
         $email
             ->setFrom($this->from)
-            ->setCreatedAt(new DateTime())
+            ->setCreatedAt(new \DateTime())
         ;
 
         if ($this->subjectPrefix) {
