@@ -2,10 +2,10 @@
 
 namespace OHMedia\EmailBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use OHMedia\EmailBundle\Repository\EmailRepository;
 use OHMedia\EmailBundle\Util\EmailAddress;
 use OHMedia\EmailBundle\Util\EmailAttachment;
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EmailRepository::class)]
 class Email
