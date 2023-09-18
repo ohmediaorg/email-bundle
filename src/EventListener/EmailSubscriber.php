@@ -65,7 +65,11 @@ class EmailSubscriber implements EventSubscriberInterface
         $template = $email->getTemplate();
 
         if ($template) {
-            $html = $this->getHtml($template, $email->getParameters());
+            $parameters = $email->getParameters();
+
+            $parameters['_subject'] = $email->getSubject();
+
+            $html = $this->getHtml($template, $parameters);
 
             $email->setHtml($html);
         }
