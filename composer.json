@@ -10,6 +10,12 @@
             "email": "justin@ohmedia.ca"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/ohmediaorg/cleanup-bundle"
+        }
+    ],
     "require": {
         "ohmedia/cleanup-bundle": "dev-main",
         "php": ">=7.2.5",
