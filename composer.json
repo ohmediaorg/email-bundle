@@ -1,5 +1,5 @@
 {
-    "name": "justin-oh/email-bundle",
+    "name": "ohmediaorg/email-bundle",
     "type": "symfony-bundle",
     "description": "Symfony EmailBundle",
     "keywords": ["email"],
