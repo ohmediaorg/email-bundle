@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "Symfony EmailBundle",
     "keywords": ["email"],
-    "license": "MIT",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Justin Hoffman",
