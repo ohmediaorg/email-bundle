@@ -44,6 +44,8 @@ oh_media_email:
         email: no-reply@website.com # required
         name: Website.com # required
     subject_prefix: '[WEBSITE.COM]' # optional
+    header_background: '#ff5b16' # default
+    link_color: '#ff5b16' # default
 ```
 
 The value of `cleanup` should be a string to pass to `new DateTime()`. Emails
@@ -90,9 +92,29 @@ Various functions on this class are variadic (https://www.php.net/manual/en/func
 
 The new Email will get sent once Symfony's messaging system has processed it.
 
-# Email Styles
+# Email Templating
 
-Email styles need to be applied inline. Create a file called
+For convenience, some basic styles/layout are already provided utilizing the
+`header_background` and `link_color` configuration values.
+
+You can take advantage of the base template as follows:
+
+```twig
+{% extends '@OHMediaEmail/base.html.twig' %}
+
+{% block content %}
+{# custom email content goes here #}
+{% endblock %}
+```
+
+The header and footer content can be customized by creating:
+
+- `templates/bundles/OHMediaEmailBundle/include/header.html.twig`
+- `templates/bundles/OHMediaEmailBundle/include/footer.html.twig`
+
+## Custom Styles
+
+If you want to override the styles completely, create
 `templates/bundles/OHMediaEmailBundle/inline-css.html.twig`.
 
 The contents of that file can be:
@@ -120,3 +142,8 @@ The path to the email styles can be whatever it needs to be.
 _**Note:** It's recommended to have a separate set of styles for your emails. These
 styles should be as simple as possible. They need to work in all sorts of email
 programs!_
+
+## Custom Everything
+
+If you want to override absolutely everything, create
+`templates/bundles/OHMediaEmailBundle/base.html.twig`.
