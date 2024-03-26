@@ -33,6 +33,12 @@ class Configuration implements ConfigurationInterface
                   ->end()
                 ->end()
                 ->scalarNode('subject_prefix')->end()
+                ->scalarNode('header_background')
+                    ->defaultValue('#ff5b16')
+                ->end()
+                ->scalarNode('link_color')
+                    ->defaultValue('#ff5b16')
+                ->end()
             ->end()
         ;
 
