@@ -29,5 +29,9 @@ class OHMediaEmailExtension extends Extension
         $container->setParameter('oh_media_email.from_name', $config['from']['name']);
 
         $container->setParameter('oh_media_email.subject_prefix', $config['subject_prefix']);
+
+        $container->setParameter('oh_media_email.header_background', $config['header_background']);
+
+        $container->setParameter('oh_media_email.link_color', $config['link_color']);
     }
 }
