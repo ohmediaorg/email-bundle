@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>{{ _subject }}</title>
+  </head>
+  <body>
+    <div class="email">
+      <div class="email-header">
+        {% include '@OHMediaEmail/include/header.html.twig' %}
+      </div>
+      <div class="email-content">
+        {% block content %}{% endblock %}
+      </div>
+      <div class="email-footer">
+        {% include '@OHMediaEmail/include/footer.html.twig' %}
+      </div>
+    </div>
+  </body>
+</html>
