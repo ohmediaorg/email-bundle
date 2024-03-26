@@ -1,1 +1,52 @@
-{{ html|raw }}
+{% apply inline_css %}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e9ecef;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .email {
+      max-width: 85%;
+      min-width: 300px;
+      margin: auto;
+      background: #ffffff;
+    }
+
+    .email-header {
+      padding: 1.25rem;
+      background: {{ header_background }};
+    }
+
+    .email-content {
+      padding: 1.5rem 3rem;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      -ms-word-break: break-all;
+      word-break: break-all;
+      word-break: break-word;
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+    }
+
+    .email-content a {
+      color: {{ link_color }};
+    }
+
+    .email-content a:hover {
+      text-decoration: underline;
+    }
+
+    .email-footer {
+      padding-top: 0.5rem;
+      color: #111;
+      font-size: 0.85rem;
+      background: #e9ecef;
+      text-align: center;
+    }
+  </style>
+
+  {{ html|raw }}
+{% endapply %}
