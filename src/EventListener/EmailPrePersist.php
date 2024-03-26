@@ -10,6 +10,8 @@ use Twig\Environment as Twig;
 class EmailPrePersist
 {
     private $from;
+    private $headerBackground;
+    private $linkColor;
     private $subjectPrefix;
     private $twig;
 
@@ -17,9 +19,13 @@ class EmailPrePersist
         Twig $twig,
         string $fromEmail,
         string $fromName,
-        ?string $subjectPrefix
+        ?string $subjectPrefix,
+        string $headerBackground,
+        string $linkColor
     ) {
         $this->from = new EmailAddress($fromEmail, $fromName);
+        $this->headerBackground = $headerBackground;
+        $this->linkColor = $linkColor;
         $this->subjectPrefix = $subjectPrefix;
         $this->twig = $twig;
     }
@@ -54,6 +60,8 @@ class EmailPrePersist
     {
         $html = $this->twig->render('@OHMediaEmail/inline-css.html.twig', [
             'html' => $this->twig->render($template, $parameters),
+            'header_background' => $this->headerBackground,
+            'link_color' => $this->linkColor,
         ]);
 
         return $html;
