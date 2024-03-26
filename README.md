@@ -25,6 +25,14 @@ $ php bin/console make:migration
 $ php bin/console doctrine:migrations:migrate
 ```
 
+Import the routes in `config/routes.yaml`:
+
+```yaml
+oh_media_email:
+    resource: '@OHMediaEmailBundle/Controller/'
+    type: attribute
+```
+
 # Configuration
 
 Create `config/packages/oh_media_email.yml` with the following contents:
@@ -99,7 +107,7 @@ The contents of that file can be:
 {% endapply %}
 ```
 
-or 
+or
 
 ```twig
 {% apply inline_css(source('@styles/email.css')) %}
