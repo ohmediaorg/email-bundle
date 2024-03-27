@@ -2,6 +2,7 @@
 
 namespace OHMedia\EmailBundle\Controller;
 
+use OHMedia\BackendBundle\Routing\Attribute\Admin;
 use OHMedia\BootstrapBundle\Service\Paginator;
 use OHMedia\EmailBundle\Entity\Email;
 use OHMedia\EmailBundle\Repository\EmailRepository;
@@ -10,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Admin]
 class EmailController extends AbstractController
 {
     #[Route('/emails', name: 'email_index', methods: ['GET'])]
