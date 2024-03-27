@@ -145,5 +145,4 @@ programs!_
 
 ## Custom Everything
 
-If you want to override absolutely everything, create
-`templates/bundles/OHMediaEmailBundle/base.html.twig`.
+If you want to override absolutely everything, simply create your own base template and extend that!
