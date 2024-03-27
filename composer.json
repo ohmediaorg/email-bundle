@@ -10,16 +10,9 @@
             "email": "justin@ohmedia.ca"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/ohmediaorg/cleanup-bundle"
-        }
-    ],
     "require": {
-        "ohmediaorg/cleanup-bundle": "dev-main",
-        "php": ">=7.2",
-        "symfony/framework-bundle": "5.4.* || 6.4.*",
+        "php": ">=8.2",
+        "symfony/framework-bundle": "6.4.*",
         "twig/cssinliner-extra": "^3.3"
     },
     "autoload": {
