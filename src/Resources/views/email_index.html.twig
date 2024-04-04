@@ -11,7 +11,14 @@
 {% block main %}
 <div class="card">
   <div class="card-body">
-    <h1 class="card-title h3">Emails</h1>
+    <div class="card-title card-title-with-count">
+      <h1 class="card-title-heading">Emails</h1>
+      <div class="card-title-count">
+        <span class="badge text-bg-primary">
+          {{ pagination.count }}
+        </span>
+      </div>
+    </div>
 
     <table class="table table-striped">
     <thead>
