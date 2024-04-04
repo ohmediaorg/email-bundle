@@ -36,9 +36,5 @@ services:
         tags: ["container.service_subscriber", "controller.service_arguments"]
         autowire: true
 
-    OHMedia\EmailBundle\Service\EmailNavItemProvider:
-        autowire: true
-        tags: ["oh_media_backend.nav_item_provider"]
-
     OHMedia\EmailBundle\Security\Voter\EmailVoter:
         tags: ["security.voter"]
