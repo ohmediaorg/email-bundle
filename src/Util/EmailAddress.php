@@ -4,13 +4,10 @@ namespace OHMedia\EmailBundle\Util;
 
 class EmailAddress implements \JsonSerializable, \Stringable
 {
-    private $email;
-    private $name;
-
-    public function __construct(string $email, string $name = '')
-    {
-        $this->email = $email;
-        $this->name = $name;
+    public function __construct(
+        private string $email,
+        private string $name = ''
+    ) {
     }
 
     public function jsonSerialize(): mixed

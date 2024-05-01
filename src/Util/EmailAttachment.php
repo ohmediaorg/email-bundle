@@ -4,18 +4,11 @@ namespace OHMedia\EmailBundle\Util;
 
 class EmailAttachment implements \JsonSerializable
 {
-    private $path;
-    private $name;
-    private $mime;
-
     public function __construct(
-        string $path,
-        string $name = null,
-        string $contentType = null
+        private string $path,
+        private ?string $name = null,
+        private ?string $contentType = null
     ) {
-        $this->path = $path;
-        $this->name = $name;
-        $this->contentType = $contentType;
     }
 
     public function getPath(): string

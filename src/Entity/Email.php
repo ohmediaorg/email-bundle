@@ -2,6 +2,7 @@
 
 namespace OHMedia\EmailBundle\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use OHMedia\EmailBundle\Repository\EmailRepository;
 use OHMedia\EmailBundle\Util\EmailAddress;
@@ -10,37 +11,37 @@ use OHMedia\EmailBundle\Util\EmailAttachment;
 #[ORM\Entity(repositoryClass: EmailRepository::class)]
 class Email
 {
-    #[ORM\Id()]
-    #[ORM\GeneratedValue()]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $subject;
+    #[ORM\Column(length: 255)]
+    private ?string $subject = null;
 
-    #[ORM\Column(type: 'text')]
-    private $html;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $html = null;
 
-    #[ORM\Column(type: 'json', name: 'recipients')]
-    private $to = [];
+    #[ORM\Column(name: 'recipients')]
+    private ?array $to = [];
 
-    #[ORM\Column(type: 'json', nullable: true)]
-    private $cc = [];
+    #[ORM\Column(nullable: true)]
+    private ?array $cc = null;
 
-    #[ORM\Column(type: 'json', nullable: true)]
-    private $bcc = [];
+    #[ORM\Column(nullable: true)]
+    private ?array $bcc = [];
 
-    #[ORM\Column(type: 'json', name: 'senders', nullable: true)]
-    private $from = [];
+    #[ORM\Column(name: 'senders', nullable: true)]
+    private ?array $from = [];
 
-    #[ORM\Column(type: 'json', nullable: true)]
-    private $reply_to = [];
+    #[ORM\Column(nullable: true)]
+    private ?array $reply_to = [];
 
-    #[ORM\Column(type: 'json', nullable: true)]
-    private $attachments = [];
+    #[ORM\Column(nullable: true)]
+    private ?array $attachments = [];
 
-    #[ORM\Column(type: 'datetime')]
-    private $created_at;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    private ?\DateTimeInterface $created_at = null;
 
     public function getId(): ?int
     {
@@ -52,7 +53,7 @@ class Email
         return $this->subject;
     }
 
-    public function setSubject(string $subject): self
+    public function setSubject(string $subject): static
     {
         $this->subject = $subject;
 
@@ -64,7 +65,7 @@ class Email
         return $this->html;
     }
 
-    public function setHtml(string $html): self
+    public function setHtml(string $html): static
     {
         $this->html = $html;
 
@@ -76,7 +77,7 @@ class Email
         return $this->emailAddressesToStrings($this->to);
     }
 
-    public function setTo(EmailAddress ...$to): self
+    public function setTo(EmailAddress ...$to): static
     {
         $this->to = $to;
 
@@ -88,7 +89,7 @@ class Email
         return $this->emailAddressesToStrings($this->cc);
     }
 
-    public function setCc(EmailAddress ...$cc): self
+    public function setCc(EmailAddress ...$cc): static
     {
         $this->cc = $cc;
 
@@ -100,7 +101,7 @@ class Email
         return $this->emailAddressesToStrings($this->bcc);
     }
 
-    public function setBcc(EmailAddress ...$bcc): self
+    public function setBcc(EmailAddress ...$bcc): static
     {
         $this->bcc = $bcc;
 
@@ -112,7 +113,7 @@ class Email
         return $this->emailAddressesToStrings($this->from);
     }
 
-    public function setFrom(EmailAddress ...$from): self
+    public function setFrom(EmailAddress ...$from): static
     {
         $this->from = $from;
 
@@ -124,7 +125,7 @@ class Email
         return $this->emailAddressesToStrings($this->reply_to);
     }
 
-    public function setReplyTo(EmailAddress ...$replyTo): self
+    public function setReplyTo(EmailAddress ...$replyTo): static
     {
         $this->reply_to = $replyTo;
 
@@ -146,7 +147,7 @@ class Email
         return $attachments;
     }
 
-    public function setAttachments(EmailAttachment ...$attachments): self
+    public function setAttachments(EmailAttachment ...$attachments): static
     {
         $this->attachments = $attachments;
 
@@ -158,7 +159,7 @@ class Email
         return $this->created_at;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    public function setCreatedAt(?\DateTimeInterface $createdAt): static
     {
         $this->created_at = $createdAt;
 

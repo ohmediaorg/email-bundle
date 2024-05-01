@@ -17,5 +17,10 @@
     },
     "autoload": {
         "psr-4": { "OHMedia\\EmailBundle\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OHMedia\\EmailBundle\\Tests\\": "tests/"
+        }
     }
 }

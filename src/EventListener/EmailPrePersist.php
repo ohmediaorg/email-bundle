@@ -9,25 +9,17 @@ use Twig\Environment as Twig;
 
 class EmailPrePersist
 {
-    private $from;
-    private $headerBackground;
-    private $linkColor;
-    private $subjectPrefix;
-    private $twig;
+    private EmailAddress $from;
 
     public function __construct(
-        Twig $twig,
+        private Twig $twig,
         string $fromEmail,
         string $fromName,
-        ?string $subjectPrefix,
-        string $headerBackground,
-        string $linkColor
+        private ?string $subjectPrefix,
+        private string $headerBackground,
+        private string $linkColor
     ) {
         $this->from = new EmailAddress($fromEmail, $fromName);
-        $this->headerBackground = $headerBackground;
-        $this->linkColor = $linkColor;
-        $this->subjectPrefix = $subjectPrefix;
-        $this->twig = $twig;
     }
 
     public function prePersist(Email $email, PrePersistEventArgs $args): void

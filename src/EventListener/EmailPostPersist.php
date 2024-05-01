@@ -9,11 +9,8 @@ use Symfony\Component\Mime\Email as MimeEmail;
 
 class EmailPostPersist
 {
-    private $mailer;
-
-    public function __construct(MailerInterface $mailer)
+    public function __construct(private MailerInterface $mailer)
     {
-        $this->mailer = $mailer;
     }
 
     public function postPersist(Email $email, PostPersistEventArgs $args): void
