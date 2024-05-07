@@ -6,32 +6,25 @@ purposes.
 
 # Installation
 
-First, make sure the OHMediaCleanupBundle is installed and Symfony's messenger
-system is set up.
+Update `composer.json` by adding this to the `repositories` array:
 
-Enable the bundle in `config/bundles.php`:
-
-```php
-return [
-    // ...
-    OHMedia\EmailBundle\OHMediaEmailBundle::class => ['all' => true],
-];
+```json
+{
+    "type": "vcs",
+    "url": "https://github.com/ohmediaorg/email-bundle"
+}
 ```
 
-Make and run the migration:
-
-```bash
-$ php bin/console make:migration
-$ php bin/console doctrine:migrations:migrate
-```
+Then run `composer require ohmediaorg/email-bundle:dev-main`.
 
 Import the routes in `config/routes.yaml`:
 
 ```yaml
 oh_media_email:
-    resource: '@OHMediaEmailBundle/Controller/'
-    type: attribute
+    resource: '@OHMediaEmailBundle/config/routes.yaml'
 ```
+
+Run `php bin/console make:migration` then run the subsequent migration.
 
 # Configuration
 
@@ -49,7 +42,7 @@ oh_media_email:
 ```
 
 The value of `cleanup` should be a string to pass to `new DateTime()`. Emails
-older than this DateTime will be deleted daily.
+older than this DateTime will be deleted when the CRON job is ran.
 
 The values of `from.email` and `from.name` will be used to create an instance of
 `Util\EmailAddress`. This value will be passed to `setFrom()` on all emails.
