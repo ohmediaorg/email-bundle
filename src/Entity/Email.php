@@ -26,7 +26,7 @@ class Email
     private ?array $to = [];
 
     #[ORM\Column(nullable: true)]
-    private ?array $cc = null;
+    private ?array $cc = [];
 
     #[ORM\Column(nullable: true)]
     private ?array $bcc = [];

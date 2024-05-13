@@ -26,7 +26,7 @@ class EmailPrePersist
     {
         $email
             ->setFrom($this->from)
-            ->setCreatedAt(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
         ;
 
         if ($this->subjectPrefix) {
