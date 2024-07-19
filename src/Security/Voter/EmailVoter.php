@@ -26,11 +26,11 @@ class EmailVoter extends AbstractEntityVoter
 
     protected function canIndex(Email $email, User $loggedIn): bool
     {
-        return $loggedIn->isDeveloper();
+        return $loggedIn->isTypeDeveloper();
     }
 
     protected function canView(Email $email, User $loggedIn): bool
     {
-        return $loggedIn->isDeveloper();
+        return $loggedIn->isTypeDeveloper();
     }
 }
