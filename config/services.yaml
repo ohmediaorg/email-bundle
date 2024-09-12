@@ -31,13 +31,3 @@ services:
                 name: 'doctrine.orm.entity_listener'
                 event: 'postPersist'
                 entity: 'OHMedia\EmailBundle\Entity\Email'
-
-    OHMedia\EmailBundle\Controller\EmailController:
-        tags: ["container.service_subscriber", "controller.service_arguments"]
-        autowire: true
-
-    OHMedia\EmailBundle\Security\Voter\EmailVoter:
-        tags: ["security.voter"]
-
-    OHMedia\EmailBundle\Service\EmailsNavLinkProvider:
-        tags: ["oh_media_backend.developer_only_nav_link_provider"]
