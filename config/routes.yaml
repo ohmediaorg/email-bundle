@@ -1,5 +1,0 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: OHMedia\EmailBundle\Controller
-    type: attribute
