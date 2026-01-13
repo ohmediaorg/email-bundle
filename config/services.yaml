@@ -10,7 +10,6 @@ services:
             - '../src/OHMediaEmailBundle.php'
 
     OHMedia\EmailBundle\EventListener\EmailPrePersist:
-        autowire: true
         tags:
             -
                 name: 'doctrine.orm.entity_listener'
@@ -18,7 +17,6 @@ services:
                 entity: 'OHMedia\EmailBundle\Entity\Email'
 
     OHMedia\EmailBundle\EventListener\EmailPostPersist:
-        autowire: true
         tags:
             -
                 name: 'doctrine.orm.entity_listener'
