@@ -5,6 +5,7 @@ namespace OHMedia\EmailBundle\EventListener;
 use Doctrine\ORM\Event\PrePersistEventArgs;
 use OHMedia\EmailBundle\Entity\Email;
 use OHMedia\EmailBundle\Util\EmailAddress;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Twig\Environment as Twig;
 
 class EmailPrePersist
@@ -13,11 +14,16 @@ class EmailPrePersist
 
     public function __construct(
         private Twig $twig,
+        #[Autowire('%oh_media_email.from_email%')]
         string $fromEmail,
+        #[Autowire('%oh_media_email.from_name%')]
         string $fromName,
+        #[Autowire('%oh_media_email.subject_prefix%')]
         private ?string $subjectPrefix,
+        #[Autowire('%oh_media_email.header_background%')]
         private string $headerBackground,
-        private string $linkColor
+        #[Autowire('%oh_media_email.link_color%')]
+        private string $linkColor,
     ) {
         $this->from = new EmailAddress($fromEmail, $fromName);
     }
