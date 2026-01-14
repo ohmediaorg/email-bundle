@@ -1,23 +1,15 @@
 services:
-    OHMedia\EmailBundle\Cleanup\EmailCleaner:
-        arguments: ["@oh_media_email.repository", "%oh_media_email.cleanup%"]
-        tags: ["oh_media_cleanup.cleaner"]
+    _defaults:
+        autowire: true
+        autoconfigure: true
 
-    OHMedia\EmailBundle\Repository\EmailRepository:
-        arguments: ["@Doctrine\\Persistence\\ManagerRegistry"]
-        tags: ["doctrine.repository_service"]
-
-    oh_media_email.repository:
-        alias: OHMedia\EmailBundle\Repository\EmailRepository
+    OHMedia\EmailBundle\:
+        resource: '../src/'
+        exclude:
+            - '../src/Entity/'
+            - '../src/OHMediaEmailBundle.php'
 
     OHMedia\EmailBundle\EventListener\EmailPrePersist:
-        arguments:
-            - "@twig"
-            - "%oh_media_email.from_email%"
-            - "%oh_media_email.from_name%"
-            - "%oh_media_email.subject_prefix%"
-            - "%oh_media_email.header_background%"
-            - "%oh_media_email.link_color%"
         tags:
             -
                 name: 'doctrine.orm.entity_listener'
@@ -25,7 +17,6 @@ services:
                 entity: 'OHMedia\EmailBundle\Entity\Email'
 
     OHMedia\EmailBundle\EventListener\EmailPostPersist:
-        arguments: ["@mailer"]
         tags:
             -
                 name: 'doctrine.orm.entity_listener'
